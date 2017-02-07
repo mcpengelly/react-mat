@@ -1,0 +1,32 @@
+const webpack = require('webpack');
+const path = require('path');
+
+
+module.exports = {
+	entry: path.join(__dirname, 'src', 'app-client.js'),
+	output: {
+		path: path.join(__dirname, 'static', 'js'),
+		filename: 'bundle.js'
+	},
+	module: {
+		loaders: [{
+			test: path.join(__dirname, 'src'),
+			loader: ['babel-loader'],
+			query: {
+				cacheDirectory: 'babel_cache',
+				presets: ['react', 'es2015']
+			}
+		}]
+	},
+	plugins: [
+		new webpack.optimize.DedupePlugin(), // removes duplicated files, including deps
+		new webpack.optimize.OccurenceOrderPlugin(), //reduse file size of bundle.js
+		new webpack.optimize.UglifyJsPlugin({
+			compress: { warnings: false },
+			mangle: true,
+			sourcemap: false,
+			beautify: false,
+			dead_code: true
+		}) // minifier
+	]
+};
