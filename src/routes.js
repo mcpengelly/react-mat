@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import Layout from './components/Layout';
-import Index from './components/Index';
-import Athlete from './components/Athlete';
+import IndexPage from './components/Index';
+import AthletePage from './components/Athlete';
 import NotFoundPage from './components/NotFoundPage';
 
 

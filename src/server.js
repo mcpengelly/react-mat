@@ -26,6 +26,15 @@ app.get('*', (req, res) => {
 				return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
 			}
 
+			let markup;
+			if(renderProps){
+				markup = renderToString(<RouterContext {...renderProps} />);
+			} else {
+				markup = renderToString(<NotFoundPage />);
+				res.status(404);
+			}
+
+
 			return res.render('index', { markup });
 		}
 	);
