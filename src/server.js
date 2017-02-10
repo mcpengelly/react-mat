@@ -1,3 +1,5 @@
+'use strict';
+
 import path from 'path';
 import { Server } from 'http';
 import Express from 'express';
@@ -33,7 +35,6 @@ app.get('*', (req, res) => {
 				markup = renderToString(<NotFoundPage />);
 				res.status(404);
 			}
-
 
 			return res.render('index', { markup });
 		}
